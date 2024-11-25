@@ -64,10 +64,17 @@ def fetch_messages():
     mail.logout()
     return links
 
+def save_links_to_file(links):
+    with open('unsubscribe_links.txt', 'w') as file:
+        file.write('\n'.join(links))
+        print('Links saved to unsubscribe_links.txt')
 
 links = fetch_messages()
 
-print('\n'.join(links))
+# print('\n'.join(links))
 
 for link in links:
     click_link(link)    
+
+
+save_links_to_file(links)
